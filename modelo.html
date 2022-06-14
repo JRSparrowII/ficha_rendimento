@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ficha Rendimento</title>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+</head>
+<body>
+	
+	<div class="conteudo" >
+		<div class="titulo">
+			<h2>Relatório de Rendimento</h2>
+			<h4>De 01/01/2019 a 01/04/2019</h4>
+			<!-- <h3>Relatório de Rendimento</h3> -->
+		</div>
+		<div class="row" style="">
+			<div class="container" style="min-width: 310px; height: 400px; max-width: 500px; ">
+				<div id="grafico-1"></div>
+			</div>
+			<div class="container-2" style="min-width: 310px; height: 400px; max-width: 500px; ">
+				<div id="grafico-2"></div>
+			</div>	
+			<div class="clear"></div>			
+		</div>
+		<div class="row" style="">
+			<div class="container" style="min-width: 310px; height: 400px; max-width: 500px; ">
+				<div id="grafico-3"></div>
+			</div>
+			<div class="container-2" style="min-width: 310px; height: 400px; max-width: 500px; ">
+				<div id="grafico-4"></div>
+			</div>	
+			<div class="clear"></div>
+		</div>
+		<div class="row"  >
+			<div class="linha" style="width: 100%;">
+				<div id="grafico-5"></div>
+			</div>
+			<!-- <div id="container-2" style="min-width: 310px; height: 400px; max-width: 500px; ">
+				<div id="grafico-6"></div>
+			</div> -->	
+			<div class="clear"></div>
+		</div>
+	</div>
+
+	<!-- <script src="https://code.highcharts.com/modules/data.js"></script>
+	<script src="https://code.highcharts.com/modules/drilldown.js"></script> -->
+	
+
+	<script>		
+	
+	jQuery.noConflict();
+				var example = 'column-drilldown', 
+					theme = 'default';
+				(function($){ // encapsulate jQuery
+		// Situação do Bloco do Curso
+		Highcharts.chart('grafico-1', {
+			colors: ['#7cb5ec', '#ef1a1a',],
+		    chart: {
+		        plotBackgroundColor: null,
+		        plotBorderWidth: null,
+		        plotShadow: false,
+		        type: 'pie'
+		    },
+		    title: {
+		        text: '1º Bloco  - Direito (50 alunos)'
+		    },
+		    tooltip: {
+		        // pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+		        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+		    },
+		    plotOptions: {
+		        pie: {
+		            allowPointSelect: true,
+		            cursor: 'pointer',
+		            dataLabels: {
+		                enabled: false
+		            },
+		            showInLegend: true
+		        }
+		    },
+		    series: [{
+		        name: 'Brands',
+		        colorByPoint: true,
+		        data: [{
+		            name: 'Aprovados',
+		            y: 60.00,
+		            // sliced: true,
+		            // selected: true
+		        }, {
+		            name: 'Reprovados',
+		            y: 40.00
+		        }]
+		    }]
+		});
+	})(jQuery);
+
+	// Grafico Rendimento do Alunos
+	Highcharts.chart('grafico-2', {
+	    chart: {
+	        type: 'column'
+	    },
+	    title: {
+	        text: 'Aluno: João da Silva'
+	    },
+	    subtitle: {
+	        text: '1º Bloco'
+	    },
+	    xAxis: {
+	        type: 'category'
+	    },
+	    yAxis: {
+	        title: {
+	            text: 'Média %'
+	        }
+
+	    },
+	    legend: {
+	        enabled: false
+	    },
+	    plotOptions: {
+	        series: {
+	            borderWidth: 0,
+	            dataLabels: {
+	                enabled: true,
+	                format: '{point.y:.2f}'
+	            }
+	        }
+	    },
+
+	    tooltip: {
+	        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+	        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}%</b> of total<br/>'
+	    },
+
+	    "series": [
+	        {
+	            "name": "Notas",
+	            "colorByPoint": true,
+	            "data": [
+	                {
+	                    "name": "Introdução a Direito",
+	                    "y": 6.2,
+	                    "drilldown": "Introdução a Direito"
+	                },
+	                {
+	                    "name": "Ética",
+	                    "y": 10.0,
+	                    "drilldown": "Ética"
+	                },
+	                {
+	                    "name": "Oratória",
+	                    "y": 7.0,
+	                    "drilldown": "Oratória"
+	                },
+	                {
+	                    "name": "Código Penal",
+	                    "y": 3.1,
+	                    "drilldown": "Oratória"
+	                },
+	                {
+	                    "name": "Leis",
+	                    "y": 9.5,
+	                    "drilldown": "Oratória"
+	                },
+	                {
+	                    "name": "Código Moral",
+	                    "y": 8.2,
+	                    "drilldown": "Oratória"
+	                }
+	                
+	            ]
+	        }
+	    ]
+	   
+	});
+
+		// Situação do Bloco do Curso
+	Highcharts.chart('grafico-3', {
+		colors: ['#7cb5ec', '#ef1a1a',],
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie'
+	    },
+	    title: {
+	        text: 'Disciplina  - Introdução ao direito'
+	    },
+	    tooltip: {
+	        // pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: false
+	            },
+	            showInLegend: true
+	        }
+	    },
+	    series: [{
+	        name: 'Brands',
+	        colorByPoint: true,
+	        data: [{
+	            name: 'Aprovados',
+	            y: 40.00,
+	            // sliced: true,
+	            // selected: true
+	        }, {
+	            name: 'Reprovados',
+	            y: 60.00
+	        }]
+	    }]
+	});
+
+	Highcharts.chart('grafico-4', {
+		colors: ['#7cb5ec', '#ef1a1a',],
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie'
+	    },
+	    title: {
+	        text: 'Disciplina  - Ética'
+	    },
+	    tooltip: {
+	        // pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	        pointFormat: '{series.name}: <b>{point.percentage:.0f}%</b>'
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: false
+	            },
+	            showInLegend: true
+	        }
+	    },
+	    series: [{
+	        name: 'Brands',
+	        colorByPoint: true,
+	        data: [{
+	            name: 'Aprovados',
+	            y: 80.00,
+	            // sliced: true,
+	            // selected: true
+	        }, {
+	            name: 'Reprovados',
+	            y: 20.00
+	        }]
+	    }]
+	});
+	</script>
+	<!-- <script src="//code.highcharts.com/themes/grid-light.js"></script> -->
+	<!-- <script src="//code.highcharts.com/themes/dark-unica.js"></script> -->
+	<script type="text/javascript">
+	jQuery.noConflict();
+				var example = 'column-drilldown', 
+					theme = 'grid-light';
+				(function($){ // encapsulate jQuery
+
+	
+		Highcharts.chart('grafico-5', {
+		    colors: ['#2b908f', '#90ee7e', '#f45b5b', '#7798BF', '#aaeeee', '#ff0066',
+        '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+		    chart: {
+		        type: 'column'
+		    },
+		    title: {
+		        text: 'Professor: Kleversor de Oliveira'
+		    },
+		    subtitle: {
+		        text: 'Direito'
+		    },
+		    xAxis: {
+		        type: 'category'
+		    },
+		    yAxis: {
+		        title: {
+		            text: 'Média %'
+		        }
+
+		    },
+		    legend: {
+		        enabled: false
+		    },
+		    plotOptions: {
+		        series: {
+		            borderWidth: 0,
+		            dataLabels: {
+		                enabled: true,
+		                format: '{point.y:.0f}%'
+		            }
+		        }
+		    },
+
+		    tooltip: {
+		        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+		        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.0f}%</b> of total<br/>'
+		    },
+
+		    "series": [
+		        {
+		            "name": "Notas",
+		            "colorByPoint": true,
+		            "data": [
+		                {
+		                    "name": "Introdução a Direito",
+		                    "y": 80.0,
+		                    "drilldown": "Introdução a Direito"
+		                },
+		                {
+		                    "name": "Ética",
+		                    "y": 30.0,
+		                    "drilldown": "Ética"
+		                },
+		                {
+		                    "name": "Oratória",
+		                    "y": 20.0,
+		                    "drilldown": "Oratória"
+		                }
+		                
+		            ]
+		        }
+		    ]
+		   
+		});
+	})(jQuery);
+	</script>
+	
+
+</body>
+</html>
